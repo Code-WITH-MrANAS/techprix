@@ -9,7 +9,7 @@ const testimonials = [
     avatar: 'SM',
     color: '#6366F1',
     rating: 5,
-    text: 'ProProgrammer completely transformed our digital presence. The 3D hero section they built for us drove a 340% increase in time-on-site. Absolutely world-class team.',
+    text: 'TechPrix completely transformed our digital presence. The 3D hero section they built for us drove a 340% increase in time-on-site. Absolutely world-class team.',
   },
   {
     name: 'James Okafor',

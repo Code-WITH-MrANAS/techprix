@@ -42,14 +42,14 @@ const Navbar = () => {
           <a
             href="/"
             className="flex items-center gap-2 group"
-            aria-label="ProProgrammer home"
+            aria-label="TechPrix home"
           >
             {/* Logo mark */}
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-400 flex items-center justify-center shadow-lg shadow-indigo-300/40 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-white font-black text-sm">P</span>
+              <span className="text-white font-black text-sm">T</span>
             </div>
             <span className="text-xl font-black font-display tracking-tight gradient-text">
-              ProProgrammer
+              TechPrix
             </span>
           </a>
 

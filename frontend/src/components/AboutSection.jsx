@@ -88,7 +88,7 @@ const AboutSection = () => {
               className="text-text-muted text-lg leading-relaxed mb-5"
             >
               Founded on the principle that great design is invisible and great
-              code is bulletproof, <strong className="text-text-secondary">ProProgrammer</strong> is
+              code is bulletproof, <strong className="text-text-secondary">TechPrix</strong> is
               a full-service creative studio where engineering meets artistry.
             </motion.p>
             <motion.p
@@ -153,7 +153,7 @@ const AboutSection = () => {
             <div className="relative rounded-3xl overflow-hidden shadow-[0_32px_80px_rgba(99,102,241,0.15)] border border-indigo-100">
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=900"
-                alt="ProProgrammer team collaborate"
+                alt="TechPrix team collaborate"
                 className="w-full h-80 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 via-transparent to-transparent" />

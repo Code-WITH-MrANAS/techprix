@@ -21,7 +21,7 @@ const sendContactNotification = async (contactData) => {
   const transporter = createTransporter();
 
   const mailOptions = {
-    from: `"Pro Programmer Website" <${process.env.EMAIL_USER}>`,
+    from: `"TechPrix Website" <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_RECEIVER || process.env.EMAIL_USER,
     replyTo: email,
     subject: `🔔 New Contact: ${name} — ${service || 'General Inquiry'}`,
@@ -31,7 +31,7 @@ const sendContactNotification = async (contactData) => {
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); padding: 32px 40px;">
           <h1 style="margin: 0; color: #fff; font-size: 22px; font-weight: 700;">
-            ◆ Pro Programmer
+            ◆ TechPrix
           </h1>
           <p style="margin: 8px 0 0; color: rgba(255,255,255,0.85); font-size: 14px;">
             New Contact Form Submission
@@ -71,7 +71,7 @@ const sendContactNotification = async (contactData) => {
 
           <!-- Reply Button -->
           <div style="margin-top: 32px; text-align: center;">
-            <a href="mailto:${email}?subject=Re: Pro Programmer Inquiry" 
+            <a href="mailto:${email}?subject=Re: TechPrix Inquiry" 
                style="display: inline-block; padding: 12px 32px; background: linear-gradient(135deg, #00d4ff, #7c3aed); color: #fff; font-size: 14px; font-weight: 600; border-radius: 50px; text-decoration: none;">
               Reply to ${name}
             </a>
@@ -81,7 +81,7 @@ const sendContactNotification = async (contactData) => {
         <!-- Footer -->
         <div style="padding: 20px 40px; background: #050510; text-align: center;">
           <p style="margin: 0; color: #555; font-size: 12px;">
-            This email was sent from the Pro Programmer website contact form.
+            This email was sent from the TechPrix website contact form.
           </p>
           <p style="margin: 4px 0 0; color: #444; font-size: 11px;">
             Submitted on ${new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' })}
@@ -112,16 +112,16 @@ const sendClientConfirmation = async (contactData) => {
   const transporter = createTransporter();
 
   const mailOptions = {
-    from: `"ProProgrammer" <${process.env.EMAIL_USER}>`,
+    from: `"TechPrix" <${process.env.EMAIL_USER}>`,
     to: email,
-    subject: `✅ We received your message, ${name}! — ProProgrammer`,
+    subject: `✅ We received your message, ${name}! — TechPrix`,
     html: `
       <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e5e7eb;">
         
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #6366F1 0%, #A78BFA 100%); padding: 40px 40px 32px;">
           <h1 style="margin: 0; color: #fff; font-size: 24px; font-weight: 800; letter-spacing: -0.5px;">
-            ◆ ProProgrammer
+            ◆ TechPrix
           </h1>
           <p style="margin: 10px 0 0; color: rgba(255,255,255,0.9); font-size: 15px; font-weight: 500;">
             Premium Digital Agency
@@ -168,14 +168,14 @@ const sendClientConfirmation = async (contactData) => {
 
           <p style="color: #6b7280; font-size: 14px; line-height: 1.7; margin: 20px 0 0;">
             If your request is urgent, feel free to reply directly to this email or reach us at 
-            <a href="mailto:proprogrammer618@gmail.com" style="color: #6366F1; text-decoration: none; font-weight: 600;">proprogrammer618@gmail.com</a>.
+            <a href="mailto:techprix@gmail.com" style="color: #6366F1; text-decoration: none; font-weight: 600;">techprix@gmail.com</a>.
           </p>
 
           <!-- Warm Regards -->
           <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
             <p style="color: #374151; font-size: 14px; margin: 0; line-height: 1.6;">
               Warm regards,<br/>
-              <strong style="color: #0a0a1a;">The ProProgrammer Team</strong>
+              <strong style="color: #0a0a1a;">The TechPrix Team</strong>
             </p>
           </div>
         </div>
@@ -183,7 +183,7 @@ const sendClientConfirmation = async (contactData) => {
         <!-- Footer -->
         <div style="padding: 20px 40px; background: #f9fafb; text-align: center; border-top: 1px solid #e5e7eb;">
           <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-            © ${new Date().getFullYear()} ProProgrammer — Premium Digital Agency
+            © ${new Date().getFullYear()} TechPrix — Premium Digital Agency
           </p>
           <p style="margin: 6px 0 0; color: #9ca3af; font-size: 11px;">
             This is an automated confirmation. You're receiving this because you submitted a message on our website.

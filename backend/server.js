@@ -45,7 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'Pro Programmer API is running',
+    message: 'TechPrix API is running',
     timestamp: new Date().toISOString(),
   });
 });
@@ -69,7 +69,7 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`
-  🚀 Pro Programmer API Server
+  🚀 TechPrix API Server
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━
   🌐 Port:        ${PORT}
   📝 Environment: ${process.env.NODE_ENV || 'development'}

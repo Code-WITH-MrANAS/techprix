@@ -51,20 +51,20 @@ const Footer = () => {
             {/* Logo */}
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-400 flex items-center justify-center shadow-md">
-                <span className="text-white font-black text-sm">P</span>
+                <span className="text-white font-black text-sm">T</span>
               </div>
-              <span className="text-xl font-black font-display gradient-text">ProProgrammer</span>
+              <span className="text-xl font-black font-display gradient-text">TechPrix</span>
             </div>
             <p className="text-text-muted text-sm leading-relaxed mb-5 max-w-xs">
               Premium digital agency crafting anti-gravity web experiences,
               strategic marketing, and unforgettable brand identities.
             </p>
             <a
-              href="mailto:proprogrammer618@gmail.com"
+              href="mailto:techprix@gmail.com"
               className="flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors duration-200 group"
             >
               <Mail size={14} />
-              proprogrammer618@gmail.com
+              techprix@gmail.com
               <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <div className="flex gap-3 mt-5">
@@ -136,7 +136,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border-light flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-text-light text-xs">
-            © {year} ProProgrammer. All rights reserved.
+            © {year} TechPrix. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-text-light text-xs">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>

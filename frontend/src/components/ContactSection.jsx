@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { submitContactForm } from '../services/api';
 
 const contactInfo = [
-  { icon: Mail,    label: 'Email Us',      value: 'proprogrammer618@gmail.com', href: 'mailto:proprogrammer618@gmail.com' },
+  { icon: Mail,    label: 'Email Us',      value: 'techprix@gmail.com', href: 'mailto:techprix@gmail.com' },
   { icon: Phone,   label: 'WhatsApp',      value: '+92 315 8094330',           href: 'https://wa.me/15550001234'          },
   { icon: MapPin,  label: 'Studio',        value: 'Room No 40 Zubair Hall Uet Lahore',             href: '#'                                   },
 ];
@@ -111,7 +111,7 @@ const ContactSection = () => {
                 Book a 30-minute session with our team. No commitment — just great advice.
               </p>
               <a
-                href="mailto:proprogrammer618@gmail.com?subject=Strategy Call Request"
+                href="mailto:techprix@gmail.com?subject=Strategy Call Request"
                 className="inline-block mt-4 px-5 py-2.5 bg-white text-primary font-bold rounded-full text-sm hover:bg-indigo-50 transition-colors relative z-10"
               >
                 Book Free Call →

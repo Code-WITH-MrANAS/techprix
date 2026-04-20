@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
 </p>
 
-<h1 align="center">🚀 ProProgrammer — Digital Agency Website</h1>
+<h1 align="center">🚀 TechPrix — Digital Agency Website</h1>
 
 <p align="center">
   <strong>A premium, full-stack digital agency website featuring 3D animations, glassmorphism design, dark/light mode, and a complete backend API.</strong>
@@ -92,7 +92,7 @@
 ## 📁 Project Structure
 
 ```
-ProProgrammer/
+TechPrix/
 ├── frontend/                    # React + Vite frontend
 │   ├── public/
 │   │   ├── favicon.svg
@@ -179,7 +179,7 @@ PORT=5000
 NODE_ENV=development
 
 # MongoDB
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/proprogrammer?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/techprix?retryWrites=true&w=majority
 
 # CORS
 CLIENT_URL=http://localhost:5173

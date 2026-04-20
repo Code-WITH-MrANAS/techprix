@@ -279,7 +279,7 @@ const HeroSection = () => {
             variants={item}
             className="text-lg md:text-xl text-text-muted max-w-2xl leading-relaxed mb-10"
           >
-            ProProgrammer is a premium digital agency crafting{' '}
+            TechPrix is a premium digital agency crafting{' '}
             <strong className="text-text-secondary font-semibold">immersive 3D web experiences</strong>,
             strategic marketing, and conversion-focused design — for brands that
             want to <em>float above the rest</em>.
