@@ -65,10 +65,11 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 // ===== Start Server =====
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`
+// Only listen when running locally (Vercel handles this automatically)
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`
   🚀 TechPrix API Server
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━
   🌐 Port:        ${PORT}
@@ -76,7 +77,8 @@ app.listen(PORT, () => {
   🔗 Health:      http://localhost:${PORT}/api/health
   📬 Contact API: http://localhost:${PORT}/api/contact
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  `);
-});
+    `);
+  });
+}
 
 module.exports = app;
