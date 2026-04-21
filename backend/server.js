@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 const contactRoutes = require('./routes/contactRoutes');
+const projectRoutes = require('./routes/projectRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -79,6 +80,9 @@ app.get('/api/health', (req, res) => {
 
 // Contact API
 app.use('/api/contact', contactRoutes);
+
+// Projects API
+app.use('/api/projects', projectRoutes);
 
 // 404 handler
 app.use((req, res) => {

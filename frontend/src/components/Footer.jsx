@@ -51,9 +51,9 @@ const Footer = () => {
             {/* Logo */}
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-400 flex items-center justify-center shadow-md">
-                <span className="text-white font-black text-sm">T</span>
+                <span className="text-white font-black text-sm"><img src="src/assets/image.png" alt="Tp" srcset="" /></span>
               </div>
-              <span className="text-xl font-black font-display gradient-text">TechPrix</span>
+              <span className="text-xl font-black italic font-display gradient-text">TechPrix</span>
             </div>
             <p className="text-text-muted text-sm leading-relaxed mb-5 max-w-xs">
               Premium digital agency crafting anti-gravity web experiences,
@@ -142,7 +142,7 @@ const Footer = () => {
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
             <span className="flex items-center gap-1">
-              Made with <span className="text-red-400">♥</span> &amp; Three.js
+             Founded by AN
             </span>
           </div>
         </div>

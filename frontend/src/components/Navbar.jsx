@@ -46,9 +46,9 @@ const Navbar = () => {
           >
             {/* Logo mark */}
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-400 flex items-center justify-center shadow-lg shadow-indigo-300/40 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-white font-black text-sm">T</span>
+              <span className="text-white font-black text-sm"><img src="src/assets/image.png" alt="Tp" srcset="" /></span>
             </div>
-            <span className="text-xl font-black font-display tracking-tight gradient-text">
+            <span className="text-xl italic font-black font-display tracking-tight gradient-text">
               TechPrix
             </span>
           </a>
