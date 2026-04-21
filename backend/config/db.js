@@ -23,8 +23,7 @@ const connectDB = async () => {
   } catch (error) {
     console.error(`❌ MongoDB Connection Error: ${error.message}`);
     console.error('💡 Tip: Make sure your IP is whitelisted in MongoDB Atlas → Network Access');
+    process.exit(1);
     // Do NOT process.exit(1) — this kills Vercel serverless functions!
   }
 };
-
-module.exports = connectDB;
