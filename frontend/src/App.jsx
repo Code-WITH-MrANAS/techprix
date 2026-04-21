@@ -5,6 +5,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar  from './components/Navbar';
 import Footer  from './components/Footer';
 import Home    from './pages/Home';
+import ServiceDetail from './pages/ServiceDetail';
 import logo from './assets/logo.png';
 
 /* ── Smooth page-load curtain ── */
@@ -67,6 +68,7 @@ function App() {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/service/:serviceId" element={<ServiceDetail />} />
             </Routes>
           </main>
           <Footer />

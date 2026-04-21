@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { Code2, Megaphone, Palette, LineChart, Smartphone, Globe } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -7,6 +8,7 @@ const services = [
   {
     icon: Code2,
     title: 'Web Development',
+    slug: 'web-development',
     desc: 'Custom, high-performance websites & apps using React, Next.js, and Node.js — pixel-perfect and blazing fast.',
     color: '#6366F1',
     lightBg: 'from-indigo-50 to-violet-50',
@@ -18,6 +20,7 @@ const services = [
   {
     icon: Smartphone,
     title: 'Mobile Apps',
+    slug: 'mobile-apps',
     desc: 'Cross-platform mobile experiences that feel native. React Native + Expo for iOS & Android.',
     color: '#38BDF8',
     lightBg: 'from-sky-50 to-cyan-50',
@@ -29,6 +32,7 @@ const services = [
   {
     icon: Megaphone,
     title: 'Digital Marketing',
+    slug: 'digital-marketing',
     desc: 'Data-driven strategies across PPC, social, and content — engineered to maximise your ROI.',
     color: '#A78BFA',
     lightBg: 'from-violet-50 to-purple-50',
@@ -40,6 +44,7 @@ const services = [
   {
     icon: Palette,
     title: 'Brand & Design',
+    slug: 'brand-design',
     desc: 'Memorable identities, UI/UX systems and visual language that make your brand unforgettable.',
     color: '#FDA4AF',
     lightBg: 'from-rose-50 to-pink-50',
@@ -51,6 +56,7 @@ const services = [
   {
     icon: LineChart,
     title: 'SEO Optimization',
+    slug: 'seo-optimization',
     desc: 'Technical SEO, content strategy and link building that drive sustainable organic growth.',
     color: '#6EE7B7',
     lightBg: 'from-emerald-50 to-teal-50',
@@ -62,6 +68,7 @@ const services = [
   {
     icon: Globe,
     title: '3D Web Experiences',
+    slug: '3d-web-experiences',
     desc: 'Immersive Three.js and WebGL scenes that turn your website into an unforgettable journey.',
     color: '#FCD34D',
     lightBg: 'from-amber-50 to-yellow-50',
@@ -136,17 +143,21 @@ const ServicesSection = () => {
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
-              <motion.div
+              <Link
                 key={i}
-                custom={i}
-                variants={cardVariants}
-                initial="hidden"
-                animate={inView ? 'show' : 'hidden'}
-                whileHover={{
-                  y: -14,
-                  transition: { type: 'spring', stiffness: 300, damping: 20 },
-                }}
-                className={`group relative bg-gradient-to-br ${dark ? s.darkBg : s.lightBg} rounded-3xl p-8 border ${dark ? s.darkBorder : `border-border-light ${s.lightBorder}`} shadow-[0_4px_24px_rgba(0,0,0,0.04)] card-lift cursor-pointer overflow-hidden`}
+                to={`/service/${s.slug}`}
+                className="no-underline"
+              >
+                <motion.div
+                  custom={i}
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate={inView ? 'show' : 'hidden'}
+                  whileHover={{
+                    y: -14,
+                    transition: { type: 'spring', stiffness: 300, damping: 20 },
+                  }}
+                  className={`group relative bg-gradient-to-br ${dark ? s.darkBg : s.lightBg} rounded-3xl p-8 border ${dark ? s.darkBorder : `border-border-light ${s.lightBorder}`} shadow-[0_4px_24px_rgba(0,0,0,0.04)] card-lift cursor-pointer overflow-hidden h-full`}
               >
                 {/* Subtle accent glow in dark mode */}
                 {dark && (
@@ -190,7 +201,8 @@ const ServicesSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             );
           })}
         </div>
