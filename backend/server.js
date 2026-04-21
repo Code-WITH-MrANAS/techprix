@@ -7,6 +7,7 @@ const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 const contactRoutes = require('./routes/contactRoutes');
 const projectRoutes = require('./routes/projectRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -83,6 +84,9 @@ app.use('/api/contact', contactRoutes);
 
 // Projects API
 app.use('/api/projects', projectRoutes);
+
+// Reviews API
+app.use('/api/reviews', reviewRoutes);
 
 // 404 handler
 app.use((req, res) => {

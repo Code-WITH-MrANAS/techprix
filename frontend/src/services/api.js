@@ -66,3 +66,32 @@ export const checkHealth = async () => {
     throw new Error('Backend is not reachable.');
   }
 };
+
+/**
+ * Submit a review
+ * @param {Object} formData - { name, email, company?, role?, rating, review, service? }
+ * @returns {Promise<Object>} - Backend response data
+ */
+export const submitReview = async (formData) => {
+  try {
+    const response = await api.post('/reviews', formData);
+    return response.data;
+  } catch (error) {
+    // Extract the most useful error message from the backend response
+    if (error.response?.data) {
+      const data = error.response.data;
+      const message =
+        data.errors?.join(', ') ||
+        data.message ||
+        'Something went wrong. Please try again.';
+      throw new Error(message);
+    }
+    if (error.code === 'ECONNABORTED') {
+      throw new Error('Request timed out. Please check your connection.');
+    }
+    if (!error.response) {
+      throw new Error('Cannot reach the server. Please try again later.');
+    }
+    throw new Error('Something went wrong. Please try again.');
+  }
+};
