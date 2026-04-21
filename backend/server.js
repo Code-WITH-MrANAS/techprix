@@ -18,13 +18,16 @@ connectDB();
 
 // ===== Middleware =====
 
-// Security headers
-app.use(helmet());
-
-// CORS - allow frontend (supports comma-separated origins in CLIENT_URL)
-const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
-  .split(',')
-  .map((o) => o.trim());
+// CORS - allow frontend (MUST be before helmet for preflight to work)
+const defaultOrigins = [
+  'https://www.techprix.online',
+  'https://techprix.online',
+  'http://localhost:5173',
+];
+const envOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(',').map((o) => o.trim())
+  : [];
+const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
 
 app.use(
   cors({
@@ -33,14 +36,21 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error(`CORS: origin ${origin} not allowed`));
+        console.log('CORS blocked origin:', origin);
+        callback(null, false);
       }
     },
-    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
+
+// Handle preflight OPTIONS requests explicitly
+app.options('*', cors());
+
+// Security headers (after CORS so preflight isn't blocked)
+app.use(helmet());
 
 // Request logging
 if (process.env.NODE_ENV === 'development') {
