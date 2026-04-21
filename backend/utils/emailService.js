@@ -168,7 +168,7 @@ const sendClientConfirmation = async (contactData) => {
 
           <p style="color: #6b7280; font-size: 14px; line-height: 1.7; margin: 20px 0 0;">
             If your request is urgent, feel free to reply directly to this email or reach us at 
-            <a href="mailto:techprix@gmail.com" style="color: #6366F1; text-decoration: none; font-weight: 600;">techprix@gmail.com</a>.
+            <a href="mailto:techprix5@gmail.com" style="color: #6366F1; text-decoration: none; font-weight: 600;">techprix5@gmail.com</a>.
           </p>
 
           <!-- Warm Regards -->

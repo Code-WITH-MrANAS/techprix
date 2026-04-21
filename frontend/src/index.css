@@ -294,3 +294,119 @@
 
 /* ── Tailwind font assignments ── */
 .font-display { font-family: var(--font-display); }
+
+/* ══════════════════════════════════════════════
+ *  HERO — CSS-only floating shapes
+ * ══════════════════════════════════════════════ */
+
+/* Gradient orb base */
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  will-change: transform;
+}
+.dark .hero-shape { opacity: 0.20; }
+
+.hero-shape-1 {
+  width: 340px; height: 340px;
+  top: 8%; left: 12%;
+  background: radial-gradient(circle, #6366F1 0%, transparent 70%);
+  animation: heroFloat1 8s ease-in-out infinite;
+}
+.hero-shape-2 {
+  width: 260px; height: 260px;
+  top: 55%; right: 8%;
+  background: radial-gradient(circle, #38BDF8 0%, transparent 70%);
+  animation: heroFloat2 10s ease-in-out infinite;
+}
+.hero-shape-3 {
+  width: 200px; height: 200px;
+  bottom: 15%; left: 25%;
+  background: radial-gradient(circle, #A78BFA 0%, transparent 70%);
+  animation: heroFloat3 9s ease-in-out infinite;
+}
+.hero-shape-4 {
+  width: 160px; height: 160px;
+  top: 20%; right: 25%;
+  background: radial-gradient(circle, #FDA4AF 0%, transparent 70%);
+  animation: heroFloat1 7s ease-in-out infinite reverse;
+}
+.hero-shape-5 {
+  width: 120px; height: 120px;
+  bottom: 30%; right: 35%;
+  background: radial-gradient(circle, #6366F1 0%, transparent 70%);
+  animation: heroFloat2 6s ease-in-out infinite;
+}
+.hero-shape-6 {
+  width: 180px; height: 180px;
+  top: 45%; left: 5%;
+  background: radial-gradient(circle, #38BDF8 0%, transparent 70%);
+  animation: heroFloat3 11s ease-in-out infinite;
+}
+
+/* Small geometric accents */
+.hero-geo {
+  position: absolute;
+  opacity: 0.15;
+  will-change: transform;
+}
+.dark .hero-geo { opacity: 0.10; }
+
+.hero-geo-1 {
+  width: 48px; height: 48px;
+  top: 18%; right: 15%;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6366F1, #A78BFA);
+  animation: heroGeo 6s ease-in-out infinite;
+}
+.hero-geo-2 {
+  width: 32px; height: 32px;
+  bottom: 25%; left: 18%;
+  border-radius: 50%;
+  background: #38BDF8;
+  animation: heroGeo 5s ease-in-out infinite reverse;
+}
+.hero-geo-3 {
+  width: 40px; height: 40px;
+  top: 60%; right: 28%;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #38BDF8, #6366F1);
+  animation: heroGeo 7s ease-in-out infinite;
+  transform: rotate(45deg);
+}
+.hero-geo-4 {
+  width: 24px; height: 24px;
+  top: 32%; left: 35%;
+  border-radius: 50%;
+  background: #A78BFA;
+  animation: heroGeo 4s ease-in-out infinite reverse;
+}
+
+@keyframes heroFloat1 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+  33%  { transform: translateY(-30px) translateX(15px) scale(1.05); }
+  66%  { transform: translateY(15px) translateX(-10px) scale(0.97); }
+}
+@keyframes heroFloat2 {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+  50%  { transform: translateY(-25px) translateX(-20px) scale(1.08); }
+}
+@keyframes heroFloat3 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  40%  { transform: translateY(20px) translateX(15px); }
+  80%  { transform: translateY(-15px) translateX(-10px); }
+}
+@keyframes heroGeo {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-18px) rotate(15deg); }
+}
+
+/* ══════════════════════════════════════════════
+ *  SMOOTH SCROLLING — anchor offsets for navbar
+ * ══════════════════════════════════════════════ */
+section[id] {
+  scroll-margin-top: 80px;
+}
+

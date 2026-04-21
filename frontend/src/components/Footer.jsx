@@ -60,11 +60,11 @@ const Footer = () => {
               strategic marketing, and unforgettable brand identities.
             </p>
             <a
-              href="mailto:techprix@gmail.com"
+              href="mailto:techprix5@gmail.com"
               className="flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors duration-200 group"
             >
               <Mail size={14} />
-              techprix@gmail.com
+              techprix5@gmail.com
               <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <div className="flex gap-3 mt-5">
