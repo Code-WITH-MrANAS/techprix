@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import logo from '../assets/logo.png';
 
 const navLinks = [
   { name: 'Services',   href: '#services'      },
@@ -46,7 +47,7 @@ const Navbar = () => {
           >
             {/* Logo mark */}
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-400 flex items-center justify-center shadow-lg shadow-indigo-300/40 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-white font-black text-sm"><img src="src/assets/logo.png" alt="Tp" srcset="" /></span>
+              <span className="text-white font-black text-sm"><img src={logo} alt="Tp" /></span>
             </div>
             <span className="text-xl italic font-black font-display tracking-tight gradient-text">
               TechPrix

@@ -5,6 +5,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar  from './components/Navbar';
 import Footer  from './components/Footer';
 import Home    from './pages/Home';
+import logo from './assets/logo.png';
 
 /* ── Smooth page-load curtain ── */
 const PageLoader = ({ onComplete }) => {
@@ -29,7 +30,7 @@ const PageLoader = ({ onComplete }) => {
       >
         {/* Logo */}
         <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-400 flex items-center justify-center shadow-[0_8px_32px_rgba(99,102,241,0.4)]">
-          <span className="text-white font-black text-xl"><img src="src/assets/logo.png" alt="Tp" srcset="" /></span>
+          <span className="text-white font-black text-xl"><img src={logo} alt="Tp" /></span>
         </div>
         {/* Loading bar */}
         <div className="w-32 h-1 rounded-full bg-bg-tertiary overflow-hidden">
