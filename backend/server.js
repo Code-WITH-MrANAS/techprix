@@ -46,10 +46,15 @@ app.use(
   })
 );
 
-// Handle preflight OPTIONS requests explicitly
-app.options('*', cors());
+// Handle preflight OPTIONS requests
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+  next();
+});
 
-// Security headers (after CORS so preflight isn't blocked)
+// Security headers
 app.use(helmet());
 
 // Request logging
@@ -92,6 +97,7 @@ if (!process.env.VERCEL) {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
     console.log(`
+
   🚀 TechPrix API Server
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━
   🌐 Port:        ${PORT}
