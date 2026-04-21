@@ -51,8 +51,8 @@ const Footer = () => {
           <div className="sm:col-span-2 lg:col-span-1">
             {/* Logo */}
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-400 flex items-center justify-center shadow-md">
-                <span className="text-white font-black text-sm"><img src={logo} alt="Tp" /></span>
+              <div className="w-18 h-8 rounded-lg flex items-center justify-center shadow-md">
+                <img src={logo} alt="Tp" />
               </div>
               <span className="text-xl font-black italic font-display gradient-text">TechPrix</span>
             </div>
