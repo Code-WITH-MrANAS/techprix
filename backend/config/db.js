@@ -27,3 +27,5 @@ const connectDB = async () => {
     // Do NOT process.exit(1) — this kills Vercel serverless functions!
   }
 };
+
+module.exports = connectDB;
