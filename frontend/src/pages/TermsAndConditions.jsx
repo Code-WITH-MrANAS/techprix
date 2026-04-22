@@ -163,7 +163,7 @@ Where practical, we will notify you of significant changes.`
       content: `For questions or concerns regarding these Terms and Conditions, please contact us at:
 
 TechPrix Digital Agency
-Email: techprix5@gmail.com
+Email: techprix68@gmail.com
 Phone: [Your Phone Number]
 Address: [Your Address]
 
@@ -259,7 +259,7 @@ We will respond to your inquiry within 30 days of receipt.`
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-full hover:shadow-glow transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-3 bg-linear-to-r from-primary to-accent text-white font-bold rounded-full hover:shadow-glow transition-all duration-300"
           >
             Contact Us
           </a>

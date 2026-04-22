@@ -42,7 +42,7 @@ const Footer = () => {
   return (
     <footer className="bg-bg-main border-t border-border-light pt-20 pb-8 relative overflow-hidden">
       {/* Subtle top gradient */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -61,11 +61,11 @@ const Footer = () => {
               strategic marketing, and unforgettable brand identities.
             </p>
             <a
-              href="mailto:techprix5@gmail.com"
+              href="mailto:techprix68@gmail.com"
               className="flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors duration-200 group"
             >
               <Mail size={14} />
-              techprix5@gmail.com
+              techprix68@gmail.com
               <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <div className="flex gap-3 mt-5">
@@ -118,7 +118,7 @@ const Footer = () => {
 
           {/* CTA card */}
           <div>
-            <div className="bg-gradient-to-br from-indigo-500 to-violet-500 rounded-2xl p-6 text-white shadow-[0_12px_40px_rgba(99,102,241,0.30)] relative overflow-hidden">
+            <div className="bg-linear-to-br from-indigo-500 to-violet-500 rounded-2xl p-6 text-white shadow-[0_12px_40px_rgba(99,102,241,0.30)] relative overflow-hidden">
               <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white/10 blur-2xl" />
               <p className="font-bold text-base mb-2 relative z-10">Start a Project</p>
               <p className="text-white/75 text-xs leading-relaxed mb-4 relative z-10">

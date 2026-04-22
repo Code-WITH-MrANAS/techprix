@@ -4,8 +4,8 @@ import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { submitContactForm } from '../services/api';
 
 const contactInfo = [
-  { icon: Mail,    label: 'Email Us',      value: 'techprix5@gmail.com', href: 'mailto:techprix5@gmail.com' },
-  { icon: Phone,   label: 'WhatsApp',      value: '+92 315 8094330',           href: 'https://wa.me/15550001234'          },
+  { icon: Mail,    label: 'Email Us',      value: 'techprix68@gmail.com', href: 'mailto:techprix68@gmail.com' },
+  { icon: Phone,   label: 'WhatsApp',      value: '+92 325 6344517',           href: 'https://wa.me/15550001234'          },
   { icon: MapPin,  label: 'Studio',        value: 'Room No 40 Zubair Hall Uet Lahore',             href: '#'                                   },
 ];
 
@@ -34,8 +34,8 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-28 bg-bg-secondary relative overflow-hidden">
       {/* BG blobs */}
-      <div className="absolute -top-40 -right-40  w-[600px] h-[600px] rounded-full bg-indigo-100/50 dark:bg-indigo-900/15 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-sky-100/40 dark:bg-sky-900/10   blur-3xl pointer-events-none" />
+      <div className="absolute -top-40 -right-40  w-150 h-150 rounded-full bg-indigo-100/50 dark:bg-indigo-900/15 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -left-40 w-125 h-125 rounded-full bg-sky-100/40 dark:bg-sky-900/10   blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -91,7 +91,7 @@ const ContactSection = () => {
                   rel="noopener noreferrer"
                   className="group flex items-start gap-4 p-5 bg-bg-main rounded-2xl border border-border-light shadow-[0_2px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(99,102,241,0.12)] hover:border-indigo-200 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <Icon size={20} className="text-primary" />
                   </div>
                   <div>
@@ -103,7 +103,7 @@ const ContactSection = () => {
             })}
 
             {/* Anti-gravity floating visual */}
-            <div className="mt-4 p-6 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-3xl text-white shadow-[0_16px_48px_rgba(99,102,241,0.35)] relative overflow-hidden">
+            <div className="mt-4 p-6 bg-linear-to-br from-indigo-500 to-violet-500 rounded-3xl text-white shadow-[0_16px_48px_rgba(99,102,241,0.35)] relative overflow-hidden">
               <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
               <div className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-white/10 blur-2xl" />
               <p className="font-black text-lg mb-2 relative z-10">Free Strategy Call</p>
@@ -111,7 +111,7 @@ const ContactSection = () => {
                 Book a 30-minute session with our team. No commitment — just great advice.
               </p>
               <a
-                href="mailto:techprix5@gmail.com?subject=Strategy Call Request"
+                href="mailto:techprix68@gmail.com?subject=Strategy Call Request"
                 className="inline-block mt-4 px-5 py-2.5 bg-white text-primary font-bold rounded-full text-sm hover:bg-indigo-50 transition-colors relative z-10"
               >
                 Book Free Call →
