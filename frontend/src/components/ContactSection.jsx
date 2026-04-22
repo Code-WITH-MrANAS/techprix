@@ -5,7 +5,7 @@ import { submitContactForm } from '../services/api';
 
 const contactInfo = [
   { icon: Mail,    label: 'Email Us',      value: 'techprix68@gmail.com', href: 'mailto:techprix68@gmail.com' },
-  { icon: Phone,   label: 'WhatsApp',      value: '+92 325 6344517',           href: 'https://wa.me/15550001234'          },
+  { icon: Phone,   label: 'WhatsApp',      value: '+92 325 6344517',           href: 'https://wa.me/923256344517'          },
   { icon: MapPin,  label: 'Studio',        value: 'Room No 40 Zubair Hall Uet Lahore',             href: '#'                                   },
 ];
 
