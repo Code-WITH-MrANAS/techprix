@@ -140,8 +140,8 @@ const Footer = () => {
             © {year} TechPrix. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-text-light text-xs">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+            <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="/terms-and-conditions" className="hover:text-primary transition-colors">Terms of Service</a>
             <span className="flex items-center gap-1">
              Founded by AN
             </span>

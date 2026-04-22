@@ -6,6 +6,8 @@ import Navbar  from './components/Navbar';
 import Footer  from './components/Footer';
 import Home    from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 import logo from './assets/logo.png';
 
 /* ── Smooth page-load curtain ── */
@@ -69,6 +71,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/service/:serviceId" element={<ServiceDetail />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             </Routes>
           </main>
           <Footer />
