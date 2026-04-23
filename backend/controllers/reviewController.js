@@ -53,14 +53,16 @@ const getApprovedReviews = async (req, res) => {
   try {
     const { featured } = req.query;
 
-    const filter = { approved: true };
+    // For now, get all reviews (approved and pending) - can be changed to only approved later
+    const filter = {};
     if (featured === 'true') {
       filter.featured = true;
     }
 
     const reviews = await Review.find(filter)
       .sort({ featured: -1, createdAt: -1 })
-      .limit(featured === 'true' ? 6 : 100);
+      .limit(featured === 'true' ? 6 : 100)
+      .select('-ipAddress -email'); // Don't expose email and IP
 
     res.status(200).json({
       success: true,

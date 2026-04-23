@@ -95,3 +95,30 @@ export const submitReview = async (formData) => {
     throw new Error('Something went wrong. Please try again.');
   }
 };
+
+/**
+ * Fetch approved reviews from the backend
+ * @param {boolean} featured - If true, fetch only featured reviews
+ * @returns {Promise<Array>} - Array of review objects
+ */
+export const fetchReviews = async (featured = false) => {
+  try {
+    const params = featured ? '?featured=true' : '';
+    console.log(`🔗 API: GET /reviews${params}`);
+    const response = await api.get(`/reviews${params}`);
+    console.log('📦 API Response:', response.data);
+    return response.data?.data || response.data;
+  } catch (error) {
+    console.error('API Error:', error);
+    if (error.response?.status === 404) {
+      throw new Error('Reviews endpoint not found (404)');
+    }
+    if (error.code === 'ECONNABORTED') {
+      throw new Error('Request timeout - server took too long to respond');
+    }
+    if (!error.response) {
+      throw new Error('Cannot reach the server - connection failed');
+    }
+    throw new Error(error.response?.data?.message || 'Failed to load reviews.');
+  }
+};

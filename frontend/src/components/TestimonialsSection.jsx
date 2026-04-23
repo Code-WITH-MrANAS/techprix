@@ -1,34 +1,42 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { fetchReviews } from '../services/api';
 
-const testimonials = [
-  {
-    name: 'Ali',
-    role: 'CEO, Luminary Tech',
-    avatar: 'SM',
-    color: '#6366F1',
-    rating: 5,
-    text: 'TechPrix completely transformed our digital presence. The 3D hero section they built for us drove a 340% increase in time-on-site. Absolutely world-class team.',
-  },
-  {
-    name: 'James Okafor',
-    role: 'Founder, Apex Capital',
-    avatar: 'JO',
-    color: '#38BDF8',
-    rating: 5,
-    text: 'We needed a fintech dashboard that felt premium and was lightning fast. They delivered in 3 weeks — under budget and above expectation. Best agency we\'ve worked with.',
-  },
-  {
-    name: 'Priya Sharma',
-    role: 'CMO, Nova SaaS',
-    avatar: 'PS',
-    color: '#A78BFA',
-    rating: 5,
-    text: 'The SEO work alone was worth every penny — we went from page 4 to position 1 in 90 days. Their full-stack capability means one agency handles everything seamlessly.',
-  }
-  
+const fallbackTestimonials = [
+  // {
+  //   name: 'Ali',
+  //   role: 'CEO, Luminary Tech',
+  //   avatar: 'SM',
+  //   color: '#6366F1',
+  //   rating: 5,
+  //   review: 'TechPrix completely transformed our digital presence. The 3D hero section they built for us drove a 340% increase in time-on-site. Absolutely world-class team.',
+  // },
+  // {
+  //   name: 'James Okafor',
+  //   role: 'Founder, Apex Capital',
+  //   avatar: 'JO',
+  //   color: '#38BDF8',
+  //   rating: 5,
+  //   review: 'We needed a fintech dashboard that felt premium and was lightning fast. They delivered in 3 weeks — under budget and above expectation. Best agency we\'ve worked with.',
+  // },
+  // {
+  //   name: 'Priya Sharma',
+  //   role: 'CMO, Nova SaaS',
+  //   avatar: 'PS',
+  //   color: '#A78BFA',
+  //   rating: 5,
+  //   review: 'The SEO work alone was worth every penny — we went from page 4 to position 1 in 90 days. Their full-stack capability means one agency handles everything seamlessly.',
+  // }
 ];
+
+const colors = ['#6366F1', '#38BDF8', '#A78BFA', '#EC4899', '#F59E0B', '#10B981', '#8B5CF6'];
+
+const getInitials = (name) => {
+  return name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U';
+};
+
+const getColorForReview = (index) => colors[index % colors.length];
 
 const Stars = ({ count }) => (
   <div className="flex gap-0.5 mb-4">
@@ -41,10 +49,53 @@ const Stars = ({ count }) => (
 );
 
 const TestimonialsSection = () => {
-  const [active, setActive]     = useState(0);
-  const [direction, setDir]     = useState(1);
-  const intervalRef             = useRef(null);
-  const total                   = testimonials.length;
+  const [testimonials, setTestimonials] = useState(fallbackTestimonials);
+  const [loading, setLoading]           = useState(true);
+  const [active, setActive]             = useState(0);
+  const [direction, setDir]             = useState(1);
+  const intervalRef                     = useRef(null);
+
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        setLoading(true);
+        console.log('📥 Fetching reviews from database...');
+        const reviews = await fetchReviews();
+        
+        console.log('✅ Reviews fetched:', reviews);
+        
+        if (reviews && Array.isArray(reviews) && reviews.length > 0) {
+          console.log(`📊 Found ${reviews.length} reviews, transforming...`);
+          
+          // Transform reviews to match testimonial format
+          const transformedReviews = reviews.map((review, index) => ({
+            name: review.name,
+            role: review.company && review.role ? `${review.role}, ${review.company}` : review.company || review.role || 'Client',
+            avatar: getInitials(review.name),
+            color: getColorForReview(index),
+            rating: review.rating,
+            review: review.review,
+            _id: review._id,
+          }));
+          
+          console.log('✨ Transformed reviews:', transformedReviews);
+          setTestimonials(transformedReviews);
+        } else {
+          console.warn('⚠️ No reviews found in database, using fallback testimonials');
+          setTestimonials(fallbackTestimonials);
+        }
+      } catch (error) {
+        console.error('❌ Failed to fetch reviews:', error.message || error);
+        setTestimonials(fallbackTestimonials);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadReviews();
+  }, []);
+
+  const total = testimonials.length;
 
   const go = (dir) => {
     setDir(dir);
@@ -54,7 +105,7 @@ const TestimonialsSection = () => {
   useEffect(() => {
     intervalRef.current = setInterval(() => go(1), 5500);
     return () => clearInterval(intervalRef.current);
-  }, []);
+  }, [total]);
 
   const variants = {
     enter:  (d) => ({ opacity: 0, x: d > 0 ?  60 : -60, scale: 0.96 }),
@@ -117,7 +168,7 @@ const TestimonialsSection = () => {
               <Stars count={t.rating} />
 
               <blockquote className="text-lg md:text-xl text-text-secondary leading-relaxed font-medium mb-8 max-w-3xl">
-                "{t.text}"
+                "{t.review}"
               </blockquote>
 
               <div className="flex items-center gap-4">
