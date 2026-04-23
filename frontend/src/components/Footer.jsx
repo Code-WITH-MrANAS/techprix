@@ -35,7 +35,7 @@ const InstagramIcon = () => (
 const socials = [
   { Icon: LinkedinIcon, href: 'https://www.linkedin.com/in/tech-prix/', label: 'LinkedIn'  },
   { Icon: GithubIcon,   href: '#', label: 'GitHub'    },
-  { Icon: InstagramIcon, href: 'https://www.instagram.com/techprix5?igsh=MWJmdzFieHZjam9sdQ==', label: 'Instagram' },
+  { Icon: InstagramIcon, href: 'https://www.instagram.com/techprix__?igsh=NDVrYmx6eWxqdmNn', label: 'Instagram' },
 ];
 
 const Footer = () => {
