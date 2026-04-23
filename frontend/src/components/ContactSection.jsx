@@ -6,7 +6,7 @@ import { submitContactForm } from '../services/api';
 const contactInfo = [
   { icon: Mail,    label: 'Email Us',      value: 'techprix68@gmail.com', href: 'mailto:techprix68@gmail.com' },
   { icon: Phone,   label: 'WhatsApp',      value: '+92 325 6344517',           href: 'https://wa.me/923256344517'          },
-  { icon: MapPin,  label: 'Studio',        value: 'Room No 40 Zubair Hall Uet Lahore',             href: '#'                                   },
+  { icon: MapPin,  label: 'Studio',        value: 'Remote',             href: '#'                                   },
 ];
 
 const ContactSection = () => {
@@ -102,21 +102,6 @@ const ContactSection = () => {
               );
             })}
 
-            {/* Anti-gravity floating visual */}
-            <div className="mt-4 p-6 bg-linear-to-br from-indigo-500 to-violet-500 rounded-3xl text-white shadow-[0_16px_48px_rgba(99,102,241,0.35)] relative overflow-hidden">
-              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-white/10 blur-2xl" />
-              <p className="font-black text-lg mb-2 relative z-10">Free Strategy Call</p>
-              <p className="text-white/75 text-sm leading-relaxed relative z-10">
-                Book a 30-minute session with our team. No commitment — just great advice.
-              </p>
-              <a
-                href="mailto:techprix68@gmail.com?subject=Strategy Call Request"
-                className="inline-block mt-4 px-5 py-2.5 bg-white text-primary font-bold rounded-full text-sm hover:bg-indigo-50 transition-colors relative z-10"
-              >
-                Book Free Call →
-              </a>
-            </div>
           </motion.div>
 
           {/* Right — form */}
