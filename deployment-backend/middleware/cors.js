@@ -6,7 +6,6 @@ const getCorsMiddleware = () => {
     "https://techprix.online",
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://frontend-red-kappa-45.vercel.app/",
     // Allow all Vercel preview deployments and production
     /^https:\/\/.*\.vercel\.app$/,
   ];
