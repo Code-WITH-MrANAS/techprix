@@ -3,14 +3,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".",
   "regions": ["iad1"],
-  "env": {
-    "MONGODB_URI": {"placeholder": "Add in Vercel dashboard"},
-    "EMAIL_USER": {"placeholder": "Add in Vercel dashboard"},
-    "EMAIL_APP_PASSWORD": {"placeholder": "Add in Vercel dashboard"},
-    "EMAIL_RECEIVER": {"placeholder": "Add in Vercel dashboard"},
-    "CLIENT_URL": "https://www.techprix.online,https://techprix.online,http://localhost:5173",
-    "NODE_ENV": "production"
-  },
   "functions": {
     "api/**/*.js": {
       "memory": 1024,
