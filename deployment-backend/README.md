@@ -15,7 +15,7 @@ This is a **serverless version** of the TechPrix backend optimized for deploymen
 ## Project Structure
 
 ```
-deployment backend/
+deployment-backend/
 ├── api/                      # Serverless API handlers
 │   ├── health.js            # Health check endpoint
 │   ├── contact/
@@ -162,7 +162,7 @@ vercel --prod
 3. Click "New Project"
 4. Select your repository
 5. Framework: **Other (Node.js)**
-6. Root Directory: `/deployment backend`
+6. Root Directory: `/deployment-backend`
 7. Add environment variables in Vercel dashboard
 8. Click "Deploy"
 

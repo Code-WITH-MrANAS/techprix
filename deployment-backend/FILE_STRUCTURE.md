@@ -3,7 +3,7 @@
 ## Complete Directory Layout
 
 ```
-deployment backend/
+deployment-backend/
 │
 ├── 📁 api/                              # Serverless Functions (Vercel routes)
 │   ├── health.js                        # GET /api/health

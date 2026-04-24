@@ -191,7 +191,7 @@ curl https://your-app.vercel.app/api/projects
 - [ ] Git repository initialized
 - [ ] Changes committed
 - [ ] Vercel project created
-- [ ] Root directory set to `/deployment backend`
+- [ ] Root directory set to `/deployment-backend`
 - [ ] Environment variables added to Vercel dashboard
 - [ ] Deployment successful
 

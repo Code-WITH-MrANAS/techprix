@@ -53,7 +53,7 @@ vercel --prod
 **Option B - Via GitHub (Recommended)**
 1. Push to GitHub
 2. Go to vercel.com → New Project → Select repo
-3. Set ROOT DIRECTORY: `/deployment backend`
+3. Set ROOT DIRECTORY: `/deployment-backend`
 4. Add environment variables
 5. Click Deploy
 
