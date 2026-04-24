@@ -1,45 +1,16 @@
-import cors from 'cors';
-import dotenv from 'dotenv';
-import connectDB from '../../config/db';
-import Project from '../../models/Project';
+require('dotenv').config();
+const connectDB = require('../config/db');
+const Project = require('../models/Project');
+const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
 
-dotenv.config();
+module.exports = async (req, res) => {
+  // Set CORS headers on all responses
+  setCorsHeaders(req, res);
 
-const getCorsMiddleware = () => {
-  const defaultOrigins = [
-    'https://www.techprix.online',
-    'https://techprix.online',
-    'http://localhost:5173',
-  ];
-  const envOrigins = process.env.CLIENT_URL
-    ? process.env.CLIENT_URL.split(',').map((o) => o.trim())
-    : [];
-  const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
-
-  return cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.log('CORS blocked origin:', origin);
-        callback(null, false);
-      }
-    },
-    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  });
-};
-
-const corsMiddleware = getCorsMiddleware();
-
-export default async function handler(req, res) {
-  // Enable CORS
+  // Apply CORS middleware
+  const corsMiddleware = getCorsMiddleware();
   await new Promise((resolve, reject) => {
-    corsMiddleware(req, res, (result) => {
-      if (result instanceof Error) reject(result);
-      else resolve(result);
-    });
+    corsMiddleware(req, res, (err) => (err ? reject(err) : resolve()));
   });
 
   // Handle OPTIONS preflight
@@ -76,4 +47,4 @@ export default async function handler(req, res) {
       message: 'Failed to retrieve projects.',
     });
   }
-}
+};

@@ -2,7 +2,7 @@ require('dotenv').config();
 const { body, validationResult } = require('express-validator');
 const connectDB = require('../config/db');
 const Review = require('../models/Review');
-const getCorsMiddleware = require('../middleware/cors');
+const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
 
 // Validation middleware
 const reviewValidation = [
@@ -56,7 +56,10 @@ const validateRequest = async (req) => {
 };
 
 module.exports = async (req, res) => {
-  // Apply CORS
+  // Set CORS headers on all responses
+  setCorsHeaders(req, res);
+
+  // Apply CORS middleware
   const corsMiddleware = getCorsMiddleware();
   await new Promise((resolve, reject) => {
     corsMiddleware(req, res, (err) => (err ? reject(err) : resolve()));
@@ -64,9 +67,6 @@ module.exports = async (req, res) => {
 
   // Handle preflight
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     return res.status(204).end();
   }
 

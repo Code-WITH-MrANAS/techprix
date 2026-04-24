@@ -1,47 +1,47 @@
-import cors from 'cors';
-import { body, validationResult } from 'express-validator';
-import dotenv from 'dotenv';
-import connectDB from '../../config/db';
-import Contact from '../../models/Contact';
-import { sendContactNotification, sendClientConfirmation } from '../../utils/emailService';
+require('dotenv').config();
+const { body, validationResult } = require('express-validator');
+const connectDB = require('../config/db');
+const Contact = require('../models/Contact');
+const { sendContactNotification, sendClientConfirmation } = require('../utils/emailService');
+const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
 
-dotenv.config();
+// Validation middleware
+const contactValidation = [
+  body('name')
+    .trim()
+    .notEmpty()
+    .withMessage('Name is required')
+    .isLength({ max: 100 })
+    .withMessage('Name cannot exceed 100 characters'),
+  body('email')
+    .trim()
+    .notEmpty()
+    .withMessage('Email is required')
+    .isEmail()
+    .withMessage('Please enter a valid email address')
+    .normalizeEmail(),
+  body('phone').optional().trim(),
+  body('service')
+    .optional()
+    .trim()
+    .isIn(['', 'Web Development', 'Mobile App', 'Digital Marketing', 'Brand & Design', 'SEO Optimization', '3D Web Experience', 'Other'])
+    .withMessage('Invalid service option'),
+  body('message')
+    .trim()
+    .notEmpty()
+    .withMessage('Message is required')
+    .isLength({ max: 2000 })
+    .withMessage('Message cannot exceed 2000 characters'),
+];
 
-const getCorsMiddleware = () => {
-  const defaultOrigins = [
-    'https://www.techprix.online',
-    'https://techprix.online',
-    'http://localhost:5173',
-  ];
-  const envOrigins = process.env.CLIENT_URL
-    ? process.env.CLIENT_URL.split(',').map((o) => o.trim())
-    : [];
-  const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
+module.exports = async (req, res) => {
+  // Set CORS headers on all responses
+  setCorsHeaders(req, res);
 
-  return cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.log('CORS blocked origin:', origin);
-        callback(null, false);
-      }
-    },
-    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  });
-};
-
-const corsMiddleware = getCorsMiddleware();
-
-export default async function handler(req, res) {
-  // Enable CORS
+  // Apply CORS middleware
+  const corsMiddleware = getCorsMiddleware();
   await new Promise((resolve, reject) => {
-    corsMiddleware(req, res, (result) => {
-      if (result instanceof Error) reject(result);
-      else resolve(result);
-    });
+    corsMiddleware(req, res, (err) => (err ? reject(err) : resolve()));
   });
 
   // Handle OPTIONS preflight
@@ -66,9 +66,14 @@ export default async function handler(req, res) {
       message: 'Internal server error',
     });
   }
-}
+};
 
 async function submitContact(req, res) {
+  // Run validations
+  for (const validation of contactValidation) {
+    await validation.run(req);
+  }
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
@@ -91,8 +96,8 @@ async function submitContact(req, res) {
     });
 
     // Send emails (non-blocking)
-    sendContactNotification({ name, email, phone: phone || '', service: service || '', message }).catch(
-      (err) => console.error('Failed to send notification email:', err)
+    sendContactNotification({ name, email, phone: phone || '', service: service || '', message }).catch((err) =>
+      console.error('Failed to send notification email:', err)
     );
     sendClientConfirmation({ name, email, service: service || '' }).catch((err) =>
       console.error('Failed to send confirmation email:', err)

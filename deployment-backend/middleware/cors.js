@@ -43,4 +43,39 @@ const getCorsMiddleware = () => {
   });
 };
 
-module.exports = getCorsMiddleware;
+// Helper to set CORS headers directly on response
+const setCorsHeaders = (req, res) => {
+  const defaultOrigins = [
+    "https://www.techprix.online",
+    "https://techprix.online",
+    "http://localhost:5173",
+    "http://localhost:3000",
+    /^https:\/\/.*\.vercel\.app$/,
+  ];
+  const envOrigins = process.env.CLIENT_URL
+    ? process.env.CLIENT_URL.split(",").map((o) => o.trim())
+    : [];
+  const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
+
+  const origin = req.headers.origin;
+
+  if (!origin) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  } else {
+    const isAllowed = allowedOrigins.some((allowedOrigin) => {
+      if (allowedOrigin instanceof RegExp) {
+        return allowedOrigin.test(origin);
+      }
+      return allowedOrigin === origin;
+    });
+    if (isAllowed) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
+    }
+  }
+
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+};
+
+module.exports = { getCorsMiddleware, setCorsHeaders };
