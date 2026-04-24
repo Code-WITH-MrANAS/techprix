@@ -1,6 +1,5 @@
 require('dotenv').config();
-const connectDB = require('../config/db');
-const Contact = require('../models/Contact');
+const { saveToFile, readFromFile } = require('../utils/fileStorage');
 const { sendContactNotification, sendClientConfirmation } = require('../utils/emailService');
 const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
 
@@ -61,8 +60,6 @@ module.exports = async (req, res) => {
   }
 
   try {
-    await connectDB();
-
     // POST - Submit new contact
     if (req.method === 'POST') {
       // Validate request data
@@ -77,7 +74,7 @@ module.exports = async (req, res) => {
 
       const { name, email, phone, service, message } = req.body;
 
-      const contact = await Contact.create({
+      const contact = saveToFile('contacts.txt', {
         name: name.trim(),
         email: email.trim().toLowerCase(),
         phone: (phone || '').trim(),
@@ -94,36 +91,10 @@ module.exports = async (req, res) => {
         success: true,
         message: 'Thank you! Your message has been sent successfully. We will get back to you within 2 hours.',
         data: {
-          id: contact._id,
+          id: contact.id,
           name: contact.name,
           email: contact.email,
           createdAt: contact.createdAt,
-        },
-      });
-    }
-
-    // GET - Retrieve all contacts (admin)
-    if (req.method === 'GET') {
-      const { status, page = 1, limit = 20 } = req.query;
-
-      const filter = {};
-      if (status) filter.status = status;
-
-      const contacts = await Contact.find(filter)
-        .sort({ createdAt: -1 })
-        .skip((page - 1) * limit)
-        .limit(parseInt(limit));
-
-      const total = await Contact.countDocuments(filter);
-
-      return res.status(200).json({
-        success: true,
-        data: contacts,
-        pagination: {
-          page: parseInt(page),
-          limit: parseInt(limit),
-          total,
-          pages: Math.ceil(total / limit),
         },
       });
     }

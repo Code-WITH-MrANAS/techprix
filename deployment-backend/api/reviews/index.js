@@ -1,6 +1,5 @@
 require('dotenv').config();
-const connectDB = require('../config/db');
-const Review = require('../models/Review');
+const { saveToFile, readFromFile } = require('../utils/fileStorage');
 const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
 
 // Manual validation function for serverless
@@ -74,8 +73,6 @@ module.exports = async (req, res) => {
   }
 
   try {
-    await connectDB();
-
     // POST - Submit new review
     if (req.method === 'POST') {
       // Validate request data
@@ -90,7 +87,7 @@ module.exports = async (req, res) => {
 
       const { name, email, company, role, rating, review, service } = req.body;
 
-      const newReview = await Review.create({
+      const newReview = saveToFile('reviews.txt', {
         name: name.trim(),
         email: email.trim().toLowerCase(),
         company: (company || '').trim(),
@@ -105,26 +102,16 @@ module.exports = async (req, res) => {
         success: true,
         message: 'Thank you for your review! It will be reviewed and published shortly.',
         data: {
-          id: newReview._id,
+          id: newReview.id,
           name: newReview.name,
           createdAt: newReview.createdAt,
         },
       });
     }
 
-    // GET - Retrieve all approved reviews
+    // GET - Retrieve all reviews
     if (req.method === 'GET') {
-      const { featured } = req.query;
-
-      const filter = {};
-      if (featured === 'true') {
-        filter.featured = true;
-      }
-
-      const reviews = await Review.find(filter)
-        .sort({ featured: -1, createdAt: -1 })
-        .limit(featured === 'true' ? 6 : 100)
-        .select('-ipAddress -email');
+      const reviews = readFromFile('reviews.txt');
 
       return res.status(200).json({
         success: true,

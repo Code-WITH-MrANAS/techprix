@@ -55,19 +55,6 @@ export const fetchProjects = async () => {
 };
 
 /**
- * Check backend health
- * @returns {Promise<Object>}
- */
-export const checkHealth = async () => {
-  try {
-    const response = await api.get('/health');
-    return response.data;
-  } catch (error) {
-    throw new Error('Backend is not reachable.');
-  }
-};
-
-/**
  * Submit a review
  * @param {Object} formData - { name, email, company?, role?, rating, review, service? }
  * @returns {Promise<Object>} - Backend response data

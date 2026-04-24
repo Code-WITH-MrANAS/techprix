@@ -1,6 +1,4 @@
 require('dotenv').config();
-const connectDB = require('../../config/db');
-const Project = require('../../models/Project');
 const { getCorsMiddleware, setCorsHeaders } = require('../../middleware/cors');
 
 module.exports = async (req, res) => {
@@ -23,8 +21,6 @@ module.exports = async (req, res) => {
   }
 
   try {
-    await connectDB();
-
     const { id } = req.query;
 
     if (!id) {
@@ -34,18 +30,10 @@ module.exports = async (req, res) => {
       });
     }
 
-    const project = await Project.findById(id);
-
-    if (!project) {
-      return res.status(404).json({
-        success: false,
-        message: 'Project not found.',
-      });
-    }
-
-    return res.status(200).json({
-      success: true,
-      data: project,
+    // Return empty/not found since projects are not stored in database
+    return res.status(404).json({
+      success: false,
+      message: 'Project not found.',
     });
   } catch (error) {
     console.error('Get project error:', error);

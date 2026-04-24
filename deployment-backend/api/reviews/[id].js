@@ -1,6 +1,5 @@
 require('dotenv').config();
-const connectDB = require('../../config/db');
-const Review = require('../../models/Review');
+const { getById } = require('../../utils/fileStorage');
 const { getCorsMiddleware, setCorsHeaders } = require('../../middleware/cors');
 
 module.exports = async (req, res) => {
@@ -19,11 +18,10 @@ module.exports = async (req, res) => {
   }
 
   try {
-    await connectDB();
     const { id } = req.query;
 
     if (req.method === 'GET') {
-      const review = await Review.findById(id);
+      const review = getById('reviews.txt', id);
 
       if (!review) {
         return res.status(404).json({

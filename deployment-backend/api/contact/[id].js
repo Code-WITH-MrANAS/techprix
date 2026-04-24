@@ -1,6 +1,5 @@
 require('dotenv').config();
-const connectDB = require('../../config/db');
-const Contact = require('../../models/Contact');
+const { getById, deleteById } = require('../../utils/fileStorage');
 const { getCorsMiddleware, setCorsHeaders } = require('../../middleware/cors');
 
 module.exports = async (req, res) => {
@@ -19,12 +18,11 @@ module.exports = async (req, res) => {
   }
 
   try {
-    await connectDB();
     const { id } = req.query;
 
     // GET - Retrieve single contact
     if (req.method === 'GET') {
-      const contact = await Contact.findById(id);
+      const contact = getById('contacts.txt', id);
 
       if (!contact) {
         return res.status(404).json({
@@ -35,46 +33,15 @@ module.exports = async (req, res) => {
 
       return res.status(200).json({
         success: true,
-        data: contact,
-      });
-    }
-
-    // PATCH - Update contact status
-    if (req.method === 'PATCH') {
-      const { status } = req.body;
-
-      if (!status || !['new', 'read', 'replied', 'archived'].includes(status)) {
-        return res.status(400).json({
-          success: false,
-          message: 'Invalid status value',
-        });
-      }
-
-      const contact = await Contact.findByIdAndUpdate(
-        id,
-        { status },
-        { new: true, runValidators: true }
-      );
-
-      if (!contact) {
-        return res.status(404).json({
-          success: false,
-          message: 'Contact not found',
-        });
-      }
-
-      return res.status(200).json({
-        success: true,
-        message: 'Contact updated successfully',
         data: contact,
       });
     }
 
     // DELETE - Delete contact
     if (req.method === 'DELETE') {
-      const contact = await Contact.findByIdAndDelete(id);
+      const deleted = deleteById('contacts.txt', id);
 
-      if (!contact) {
+      if (!deleted) {
         return res.status(404).json({
           success: false,
           message: 'Contact not found',

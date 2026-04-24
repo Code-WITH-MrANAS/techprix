@@ -1,6 +1,4 @@
 require('dotenv').config();
-const connectDB = require('../config/db');
-const Project = require('../models/Project');
 const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
 
 module.exports = async (req, res) => {
@@ -18,31 +16,21 @@ module.exports = async (req, res) => {
     return res.status(204).end();
   }
 
-  try {
-    await connectDB();
-
-    if (req.method === 'GET') {
-      const { featured } = req.query;
-
-      const filter = { active: true };
-      if (featured === 'true') {
-        filter.featured = true;
-      }
-
-      const projects = await Project.find(filter)
-        .sort({ featured: -1, createdAt: -1 })
-        .limit(featured === 'true' ? 6 : 100);
-
-      return res.status(200).json({
-        success: true,
-        data: projects,
-        count: projects.length,
-      });
-    }
-
+  // Only GET method allowed to fetch projects list
+  if (req.method !== 'GET') {
     return res.status(405).json({
       success: false,
       message: `Method ${req.method} not allowed`,
+    });
+  }
+
+  try {
+    // Return empty projects list - Projects are managed separately
+    return res.status(200).json({
+      success: true,
+      data: [],
+      count: 0,
+      message: 'Projects endpoint is available. Currently no projects listed.',
     });
   } catch (error) {
     console.error('Projects API error:', error);
