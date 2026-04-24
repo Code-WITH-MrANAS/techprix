@@ -4,30 +4,30 @@ import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { fetchReviews } from '../services/api';
 
 const fallbackTestimonials = [
-  // {
-  //   name: 'Ali',
-  //   role: 'CEO, Luminary Tech',
-  //   avatar: 'SM',
-  //   color: '#6366F1',
-  //   rating: 5,
-  //   review: 'TechPrix completely transformed our digital presence. The 3D hero section they built for us drove a 340% increase in time-on-site. Absolutely world-class team.',
-  // },
-  // {
-  //   name: 'James Okafor',
-  //   role: 'Founder, Apex Capital',
-  //   avatar: 'JO',
-  //   color: '#38BDF8',
-  //   rating: 5,
-  //   review: 'We needed a fintech dashboard that felt premium and was lightning fast. They delivered in 3 weeks — under budget and above expectation. Best agency we\'ve worked with.',
-  // },
-  // {
-  //   name: 'Priya Sharma',
-  //   role: 'CMO, Nova SaaS',
-  //   avatar: 'PS',
-  //   color: '#A78BFA',
-  //   rating: 5,
-  //   review: 'The SEO work alone was worth every penny — we went from page 4 to position 1 in 90 days. Their full-stack capability means one agency handles everything seamlessly.',
-  // }
+  {
+    name: 'Ali',
+    role: 'CEO, Luminary Tech',
+    avatar: 'AL',
+    color: '#6366F1',
+    rating: 5,
+    review: 'TechPrix completely transformed our digital presence. The 3D hero section they built for us drove a 340% increase in time-on-site. Absolutely world-class team.',
+  },
+  {
+    name: 'James Okafor',
+    role: 'Founder, Apex Capital',
+    avatar: 'JO',
+    color: '#38BDF8',
+    rating: 5,
+    review: 'We needed a fintech dashboard that felt premium and was lightning fast. They delivered in 3 weeks — under budget and above expectation. Best agency we\'ve worked with.',
+  },
+  {
+    name: 'Priya Sharma',
+    role: 'CMO, Nova SaaS',
+    avatar: 'PS',
+    color: '#A78BFA',
+    rating: 5,
+    review: 'The SEO work alone was worth every penny — we went from page 4 to position 1 in 90 days. Their full-stack capability means one agency handles everything seamlessly.',
+  }
 ];
 
 const colors = ['#6366F1', '#38BDF8', '#A78BFA', '#EC4899', '#F59E0B', '#10B981', '#8B5CF6'];
