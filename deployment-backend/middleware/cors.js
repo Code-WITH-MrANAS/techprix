@@ -1,16 +1,17 @@
-const cors = require('cors');
+const cors = require("cors");
 
 const getCorsMiddleware = () => {
   const defaultOrigins = [
-    'https://www.techprix.online',
-    'https://techprix.online',
-    'http://localhost:5173',
-    'http://localhost:3000',
+    "https://www.techprix.online",
+    "https://techprix.online",
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://frontend-red-kappa-45.vercel.app/",
     // Allow all Vercel preview deployments and production
     /^https:\/\/.*\.vercel\.app$/,
   ];
   const envOrigins = process.env.CLIENT_URL
-    ? process.env.CLIENT_URL.split(',').map((o) => o.trim())
+    ? process.env.CLIENT_URL.split(",").map((o) => o.trim())
     : [];
   const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
 
@@ -33,12 +34,12 @@ const getCorsMiddleware = () => {
       if (isAllowed) {
         callback(null, true);
       } else {
-        console.log('CORS blocked origin:', origin);
+        console.log("CORS blocked origin:", origin);
         callback(null, false);
       }
     },
-    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   });
 };
