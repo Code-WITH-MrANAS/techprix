@@ -2,10 +2,6 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": ".",
-  "framework": "nodejs",
-  "nodejs": {
-    "version": "18.x"
-  },
   "regions": ["iad1"],
   "env": {
     "MONGODB_URI": "@mongodb_uri",
