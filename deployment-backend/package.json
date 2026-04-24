@@ -19,5 +19,8 @@
     "helmet": "^8.1.0",
     "mongoose": "^9.4.1",
     "nodemailer": "^8.0.5"
+  },
+  "devDependencies": {
+    "vercel": "^52.0.0"
   }
 }
