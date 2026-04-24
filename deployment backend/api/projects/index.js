@@ -1,0 +1,55 @@
+require('dotenv').config();
+const connectDB = require('../config/db');
+const Project = require('../models/Project');
+const getCorsMiddleware = require('../middleware/cors');
+
+module.exports = async (req, res) => {
+  // Apply CORS
+  const corsMiddleware = getCorsMiddleware();
+  await new Promise((resolve, reject) => {
+    corsMiddleware(req, res, (err) => (err ? reject(err) : resolve()));
+  });
+
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', req.headers.origin || '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    return res.status(204).end();
+  }
+
+  try {
+    await connectDB();
+
+    if (req.method === 'GET') {
+      const { featured } = req.query;
+
+      const filter = { active: true };
+      if (featured === 'true') {
+        filter.featured = true;
+      }
+
+      const projects = await Project.find(filter)
+        .sort({ featured: -1, createdAt: -1 })
+        .limit(featured === 'true' ? 6 : 100);
+
+      return res.status(200).json({
+        success: true,
+        data: projects,
+        count: projects.length,
+      });
+    }
+
+    return res.status(405).json({
+      success: false,
+      message: `Method ${req.method} not allowed`,
+    });
+  } catch (error) {
+    console.error('Projects API error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve projects',
+      error: error.message,
+    });
+  }
+};
