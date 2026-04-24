@@ -4,11 +4,11 @@
   "outputDirectory": ".",
   "regions": ["iad1"],
   "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "EMAIL_USER": "@email_user", 
-    "EMAIL_APP_PASSWORD": "@email_app_password",
-    "EMAIL_RECEIVER": "@email_receiver",
-    "CLIENT_URL": "@client_url",
+    "MONGODB_URI": {"placeholder": "Add in Vercel dashboard"},
+    "EMAIL_USER": {"placeholder": "Add in Vercel dashboard"},
+    "EMAIL_APP_PASSWORD": {"placeholder": "Add in Vercel dashboard"},
+    "EMAIL_RECEIVER": {"placeholder": "Add in Vercel dashboard"},
+    "CLIENT_URL": "https://www.techprix.online,https://techprix.online,http://localhost:5173",
     "NODE_ENV": "production"
   },
   "functions": {
