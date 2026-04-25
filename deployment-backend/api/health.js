@@ -1,5 +1,4 @@
 require('dotenv').config();
-const connectDB = require('../config/db');
 const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
 
 // Health check endpoint
@@ -19,12 +18,12 @@ module.exports = async (req, res) => {
   }
 
   try {
-    await connectDB();
     res.status(200).json({
       success: true,
       message: 'TechPrix API is running 🚀',
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV || 'production',
+      storage: 'file-based',
     });
   } catch (error) {
     console.error('Health check error:', error);

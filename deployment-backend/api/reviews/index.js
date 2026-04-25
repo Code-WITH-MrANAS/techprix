@@ -1,6 +1,6 @@
 require('dotenv').config();
-const { saveToFile, readFromFile } = require('../utils/fileStorage');
-const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
+const { saveToFile, readFromFile } = require('../../utils/fileStorage');
+const { getCorsMiddleware, setCorsHeaders } = require('../../middleware/cors');
 
 // Manual validation function for serverless
 const validateReviewData = (data) => {

@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
+const { getCorsMiddleware, setCorsHeaders } = require('../../middleware/cors');
 
 module.exports = async (req, res) => {
   // Set CORS headers on all responses

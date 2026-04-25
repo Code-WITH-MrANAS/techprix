@@ -1,7 +1,7 @@
 require('dotenv').config();
-const { saveToFile, readFromFile } = require('../utils/fileStorage');
-const { sendContactNotification, sendClientConfirmation } = require('../utils/emailService');
-const { getCorsMiddleware, setCorsHeaders } = require('../middleware/cors');
+const { saveToFile, readFromFile } = require('../../utils/fileStorage');
+const { sendContactNotification, sendClientConfirmation } = require('../../utils/emailService');
+const { getCorsMiddleware, setCorsHeaders } = require('../../middleware/cors');
 
 // Manual validation function for serverless
 const validateContactData = (data) => {

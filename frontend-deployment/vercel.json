@@ -3,7 +3,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "env": {
-    "VITE_API_URL": "https://techprix-uun4.vercel.app/api"
+    "VITE_BACKEND2_URL": "@backend2_url"
   },
   "headers": [
     {

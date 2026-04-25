@@ -4,7 +4,7 @@
   "description": "TechPrix Backend - Serverless Vercel Deployment",
   "main": "index.js",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "node dev-server.js",
     "build": "echo 'Build complete'",
     "start": "node server.js"
   },
