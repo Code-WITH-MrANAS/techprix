@@ -2,9 +2,6 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "env": {
-    "VITE_BACKEND2_URL": "@backend2_url"
-  },
   "headers": [
     {
       "source": "/index.html",

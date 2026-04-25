@@ -1,20 +1,3 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    }
-  ],
-  "env": {
-    "EMAIL_USER": "@email_user",
-    "EMAIL_APP_PASSWORD": "@email_app_password",
-    "EMAIL_RECEIVER": "@email_receiver"
-  }
+  "version": 2
 }
